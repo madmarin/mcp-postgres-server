@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+MANIFEST
+
+# Environment (keep .env.example, ignore everything else)
+.env
+.env.local
+.env.*.local
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+
+# Type checking & linting
+.mypy_cache/
+.ruff_cache/
+.pre-commit-cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Packaging
+dist/
+*.tar.gz
+*.whl
