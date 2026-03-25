@@ -35,7 +35,7 @@ async def db_pool(test_settings):
 
 
 @pytest_asyncio.fixture()
-async def seed_tables():
+async def seed_tables(db_pool):  # noqa: ARG001 — ensures pool is initialized before this fixture
     """Create and seed sample tables for query tests."""
     from mcp_postgres.db.pool import acquire
 
