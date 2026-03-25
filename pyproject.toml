@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mcp-postgres"
+name = "mcp-postgres-server"
 version = "0.1.0"
 description = "A production-ready MCP server that exposes PostgreSQL databases via the Model Context Protocol"
 readme = "README.md"
