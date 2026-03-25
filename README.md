@@ -3,8 +3,8 @@
 A production-ready [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that gives AI assistants (Claude, etc.) direct, safe access to your PostgreSQL database.
 
 [![CI](https://github.com/madmarin/mcp-postgres/actions/workflows/ci.yml/badge.svg)](https://github.com/madmarin/mcp-postgres/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/mcp-postgres)](https://pypi.org/project/mcp-postgres/)
-[![Python](https://img.shields.io/pypi/pyversions/mcp-postgres)](https://pypi.org/project/mcp-postgres/)
+[![PyPI](https://img.shields.io/pypi/v/mcp-postgres-server)](https://pypi.org/project/mcp-postgres-server/)
+[![Python](https://img.shields.io/pypi/pyversions/mcp-postgres-server)](https://pypi.org/project/mcp-postgres-server/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
@@ -28,13 +28,13 @@ A production-ready [Model Context Protocol (MCP)](https://modelcontextprotocol.i
 ### 1. Install
 
 ```bash
-pip install mcp-postgres
+pip install mcp-postgres-server
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/madmarin/mcp-postgres
+git clone https://github.com/madmarin/mcp-postgres-server
 cd mcp-postgres
 pip install -e .
 ```
@@ -56,7 +56,7 @@ DATABASE_URL=postgresql+psycopg://user:password@localhost:5432/mydb
 ### 3. Run
 
 ```bash
-mcp-postgres
+mcp-postgres-server
 ```
 
 The server starts in `stdio` mode by default, ready to be used by any MCP client.
@@ -71,7 +71,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 {
   "mcpServers": {
     "postgres": {
-      "command": "mcp-postgres",
+      "command": "mcp-postgres-server",
       "env": {
         "DATABASE_URL": "postgresql+psycopg://user:password@localhost:5432/mydb"
       }
@@ -80,6 +80,15 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 }
 ```
 
+> **macOS note:** Claude Desktop uses a restricted PATH and may not find the command by name. If you get a `Server disconnected` error, use the full path instead:
+>
+> ```bash
+> which mcp-postgres-server
+> # e.g. /Library/Frameworks/Python.framework/Versions/3.14/bin/mcp-postgres-server
+> ```
+>
+> Then use that full path as the `"command"` value in the config above.
+
 Restart Claude Desktop — you will see the PostgreSQL tools available.
 
 ---
@@ -87,7 +96,7 @@ Restart Claude Desktop — you will see the PostgreSQL tools available.
 ## Add to Claude Code (CLI)
 
 ```bash
-claude mcp add postgres -- mcp-postgres
+claude mcp add postgres -- mcp-postgres-server
 ```
 
 Then set the environment variable:
