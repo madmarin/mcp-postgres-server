@@ -108,6 +108,22 @@ Before opening a PR, make sure:
 
 ---
 
+## Pre-Push Checklist
+
+Run this exact sequence before `git push`:
+
+```bash
+ruff format src tests
+ruff check src tests
+mypy src
+python3 -m pytest
+git status
+```
+
+`git status` should be clean before pushing.
+
+---
+
 ## How to Add a New Tool
 
 1. **Create the implementation** in `src/mcp_postgres_server/tools/your_tool.py`
