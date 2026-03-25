@@ -9,9 +9,9 @@ from typing import Any
 
 from loguru import logger
 
+from mcp_postgres import exceptions as exc
 from mcp_postgres.config import settings
 from mcp_postgres.db.pool import acquire
-from mcp_postgres import exceptions as exc
 
 # Block the most dangerous DDL regardless of ALLOW_WRITE
 _DENYLIST = re.compile(

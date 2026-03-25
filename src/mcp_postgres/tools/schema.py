@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import json
 
-from mcp_postgres.db.pool import acquire
 from mcp_postgres import exceptions as exc
+from mcp_postgres.db.pool import acquire
 
 
 async def list_schemas() -> str:

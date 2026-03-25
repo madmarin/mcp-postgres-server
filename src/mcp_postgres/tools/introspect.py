@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import json
 
-from mcp_postgres.db.pool import acquire
 from mcp_postgres import exceptions as exc
+from mcp_postgres.db.pool import acquire
 
 
 async def describe_table(table: str, schema: str = "public") -> str:
@@ -85,9 +85,7 @@ async def describe_table(table: str, schema: str = "public") -> str:
     except exc.MCPPostgresError:
         raise
     except Exception as e:
-        raise exc.QueryError(
-            f"Failed to describe table '{schema}.{table}'.", detail=str(e)
-        ) from e
+        raise exc.QueryError(f"Failed to describe table '{schema}.{table}'.", detail=str(e)) from e
 
     if not col_rows:
         raise exc.QueryError(

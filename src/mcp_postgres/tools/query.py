@@ -5,15 +5,16 @@ from __future__ import annotations
 import json
 import re
 import time
+from datetime import date, datetime
+from datetime import time as dt_time
 from decimal import Decimal
-from datetime import date, datetime, time as dt_time
 from typing import Any
 from uuid import UUID
 
 from loguru import logger
 
-from mcp_postgres.db.pool import acquire
 from mcp_postgres import exceptions as exc
+from mcp_postgres.db.pool import acquire
 
 # Only allow statements that start with SELECT or a CTE (WITH ... SELECT)
 _ALLOWED_PATTERN = re.compile(r"^\s*(WITH\b|SELECT\b)", re.IGNORECASE)

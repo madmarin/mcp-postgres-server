@@ -1,11 +1,12 @@
 """Tests for list_schemas, list_tables, and describe_table."""
 
 import json
+
 import pytest
 
-from mcp_postgres.tools.schema import list_schemas, list_tables
-from mcp_postgres.tools.introspect import describe_table
 from mcp_postgres import exceptions as exc
+from mcp_postgres.tools.introspect import describe_table
+from mcp_postgres.tools.schema import list_schemas, list_tables
 
 
 @pytest.mark.asyncio

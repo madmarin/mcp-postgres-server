@@ -1,11 +1,12 @@
 """Tests for the execute tool."""
 
 import json
+from unittest.mock import patch
+
 import pytest
 
-from unittest.mock import patch
-from mcp_postgres.tools.execute import execute
 from mcp_postgres import exceptions as exc
+from mcp_postgres.tools.execute import execute
 
 
 @pytest.mark.asyncio

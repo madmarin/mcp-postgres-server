@@ -2,15 +2,15 @@
 
 from __future__ import annotations
 
+from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from typing import AsyncIterator
 
 import psycopg
-from psycopg_pool import AsyncConnectionPool
 from loguru import logger
+from psycopg_pool import AsyncConnectionPool
 
-from mcp_postgres.config import Settings
 from mcp_postgres import exceptions as exc
+from mcp_postgres.config import Settings
 
 _pool: AsyncConnectionPool | None = None
 
@@ -20,7 +20,11 @@ async def init_pool(settings: Settings) -> None:
     if _pool is not None:
         return
     try:
-        logger.info("Initializing connection pool (min={}, max={})", settings.pool_min_size, settings.pool_max_size)
+        logger.info(
+            "Initializing connection pool (min={}, max={})",
+            settings.pool_min_size,
+            settings.pool_max_size,
+        )
         _pool = AsyncConnectionPool(
             conninfo=settings.psycopg_conninfo,
             min_size=settings.pool_min_size,
