@@ -2,7 +2,7 @@
 
 A production-ready [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that gives AI assistants (Claude, etc.) direct, safe access to your PostgreSQL database.
 
-[![CI](https://github.com/madmarin/mcp-postgres-server/actions/workflows/ci.yml/badge.svg)](https://github.com/madmarin/mcp-postgres-server/actions/workflows/ci.yml)
+[![CI](https://github.com/noquieono/mcp-postgres-server/actions/workflows/ci.yml/badge.svg)](https://github.com/noquieono/mcp-postgres-server/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/mcp-postgres-server)](https://pypi.org/project/mcp-postgres-server/)
 [![Python](https://img.shields.io/pypi/pyversions/mcp-postgres-server)](https://pypi.org/project/mcp-postgres-server/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -34,7 +34,7 @@ pip install mcp-postgres-server
 Or install from source:
 
 ```bash
-git clone https://github.com/madmarin/mcp-postgres-server
+git clone https://github.com/noquieono/mcp-postgres-server
 cd mcp-postgres-server
 pip install -e .
 ```
@@ -145,7 +145,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
         "ALLOW_WRITE",
         "-e",
         "QUERY_TIMEOUT",
-        "madmarin/mcp-postgres-server"
+        "noquieono/mcp-postgres-server"
       ],
       "env": {
         "DATABASE_URL": "postgresql+psycopg://user:password@localhost:5432/mydb",
@@ -163,7 +163,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 claude mcp add postgres -- docker run -i --rm \
   -e DATABASE_URL \
   -e ALLOW_WRITE \
-  madmarin/mcp-postgres-server
+  noquieono/mcp-postgres-server
 ```
 
 Then set the environment variable:
@@ -172,7 +172,7 @@ Then set the environment variable:
 export DATABASE_URL="postgresql+psycopg://user:password@localhost:5432/mydb"
 ```
 
-> **Docker MCP Toolkit:** This server is also available in the [Docker MCP Toolkit](https://hub.docker.com/r/madmarin/mcp-postgres-server) catalog. You can add it directly from Docker Desktop without any manual configuration.
+> **Docker MCP Toolkit:** This server is also available in the [Docker MCP Toolkit](https://hub.docker.com/r/noquieono/mcp-postgres-server) catalog. You can add it directly from Docker Desktop without any manual configuration.
 
 ---
 
@@ -306,7 +306,7 @@ Output (JSON):
 ## Development
 
 ```bash
-git clone https://github.com/madmarin/mcp-postgres-server
+git clone https://github.com/noquieono/mcp-postgres-server
 cd mcp-postgres-server
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,test]"

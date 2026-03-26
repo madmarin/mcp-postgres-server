@@ -7,7 +7,7 @@ icon: https://www.postgresql.org/media/img/about/press/elephant.png
 repository: https://github.com/madmarin/mcp-postgres-server
 license: MIT
 
-image: madmarin/mcp-postgres-server:latest
+image: noquieono/mcp-postgres-server:latest
 
 tools:
   - query
