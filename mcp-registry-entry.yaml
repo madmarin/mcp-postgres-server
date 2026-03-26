@@ -1,0 +1,36 @@
+name: mcp-postgres-server
+description: >
+  A production-ready MCP server that gives AI assistants direct, safe access
+  to your PostgreSQL database. Supports read-only queries by default, with
+  optional write access. Includes schema introspection tools.
+icon: https://www.postgresql.org/media/img/about/press/elephant.png
+repository: https://github.com/madmarin/mcp-postgres-server
+license: MIT
+
+image: madmarin/mcp-postgres-server:latest
+
+tools:
+  - query
+  - execute
+  - list_schemas
+  - list_tables
+  - describe_table
+
+env:
+  - name: DATABASE_URL
+    description: >
+      Full PostgreSQL connection string.
+      Format: postgresql+psycopg://user:password@host:5432/dbname
+      If your password contains special characters, URL-encode them.
+    required: true
+    secret: true
+  - name: ALLOW_WRITE
+    description: >
+      Set to "true" to enable the execute tool (INSERT, UPDATE, DELETE, DDL).
+      Defaults to "false" (read-only mode).
+    required: false
+    default: "false"
+  - name: QUERY_TIMEOUT
+    description: Per-statement timeout in seconds.
+    required: false
+    default: "30.0"
