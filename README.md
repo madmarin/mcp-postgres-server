@@ -122,6 +122,60 @@ export DATABASE_URL="postgresql+psycopg://user:password@localhost:5432/mydb"
 
 ---
 
+## Use with Docker (no Python required)
+
+If you have Docker installed, you can run the server without installing Python or any dependencies.
+
+### Claude Desktop
+
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "DATABASE_URL",
+        "-e",
+        "ALLOW_WRITE",
+        "-e",
+        "QUERY_TIMEOUT",
+        "madmarin/mcp-postgres-server"
+      ],
+      "env": {
+        "DATABASE_URL": "postgresql+psycopg://user:password@localhost:5432/mydb",
+        "ALLOW_WRITE": "false",
+        "QUERY_TIMEOUT": "30.0"
+      }
+    }
+  }
+}
+```
+
+### Claude Code (CLI)
+
+```bash
+claude mcp add postgres -- docker run -i --rm \
+  -e DATABASE_URL \
+  -e ALLOW_WRITE \
+  madmarin/mcp-postgres-server
+```
+
+Then set the environment variable:
+
+```bash
+export DATABASE_URL="postgresql+psycopg://user:password@localhost:5432/mydb"
+```
+
+> **Docker MCP Toolkit:** This server is also available in the [Docker MCP Toolkit](https://hub.docker.com/r/madmarin/mcp-postgres-server) catalog. You can add it directly from Docker Desktop without any manual configuration.
+
+---
+
 ## Configuration Reference
 
 All settings are read from environment variables or a `.env` file in the working directory.
