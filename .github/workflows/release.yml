@@ -58,3 +58,10 @@ jobs:
           tags: |
             noquieono/mcp-postgres-server:latest
             noquieono/mcp-postgres-server:${{ steps.version.outputs.version }}
+      - name: Update Docker Hub description
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: noquieono/mcp-postgres-server
+          readme-filepath: ./README.md
